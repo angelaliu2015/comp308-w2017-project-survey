@@ -13,7 +13,7 @@
   </head>
   <body>
 
-  <nav class="navbar navbar-default" role="navigation">
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -27,7 +27,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-center">
         <% if(title == "Home") { %>
           <li class="active"><a href="/"><i class="fa fa-home fa-lg"></i> Home</a></li>
         <% } else { %>
@@ -35,7 +35,7 @@
         <% } %>
 
         <% if(typeof displayName == 'string' && displayName) { %>
-          <% if(title == "My surveys") { %>
+          <% if(title == "My Surveys List") { %>
           <li class="active"><a href="/surveys/mySurveys"><i class="fa fa-quora" aria-hidden="true"></i>
           </i> My Survey List</a></li>
           <% } else { %>
@@ -52,7 +52,7 @@
             <% } %>
         <% } %>         
 
-        <% if(title == "Respond") { %>
+        <% if(title == "Surveys List") { %>
           <li class="active"><a href="/surveys"><i class="fa fa-commenting" aria-hidden="true"></i> Respond</a></li>
         <% } else { %>
           <li><a href="/surveys"><i class="fa fa-commenting" aria-hidden="true"></i> Respond</a></li>
