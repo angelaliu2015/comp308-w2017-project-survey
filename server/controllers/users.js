@@ -17,7 +17,7 @@ module.exports.DisplayLogin = (req, res) => {
     });
     return;
   } else {
-    return res.redirect('/games'); // redirect to games list
+    return res.redirect('/surveys/mySurveys'); // redirect to survey list
   }
 }
 
@@ -43,7 +43,7 @@ module.exports.DisplayRegistration = (req, res) => {
     });
     return;
   } else {
-    return res.redirect('/games'); // redirect to games list
+    return res.redirect('/surveys/mySurveys'); // redirect to survey list
   }
 }
 
@@ -90,4 +90,56 @@ module.exports.RequireAuth = (req, res, next) => {
     return res.redirect('/users/login');
   }
   next();
+}
+
+// Displays the Profile page to Update user profile
+// find the user by id and populate the form
+module.exports.DisplayEdit = (req, res) => {
+  try {
+      // get a reference to the id from the url
+       let id = req.user._id;
+       console.log(id);
+        // find one User by its id
+       User.findById(id, (err, users) => {
+        if(err) {
+          console.log(err);
+          res.end(error);
+        } else {
+          // show the user profile details view
+          res.render('auth/profile', {
+              title: 'User Profile',
+              users: users,
+              messages: req.flash('updateMessage'),
+              displayName: req.user.displayName
+          });
+        }
+      });
+    } catch (err) {
+      console.log(err);
+      res.redirect('/errors/404');
+    }
+}
+
+// Update an existing User profile in the users collection
+module.exports.UpdateProfile = (req, res) => {
+  // get a reference to the id from the url
+    let id = req.user._id;
+
+     let updatedProfile = User({
+       "_id": id,
+      "email": req.body.email,
+      "username": req.body.username,
+      "displayName": req.body.displayName
+    });
+  //  req.body.password,
+
+    User.update({_id: id}, updatedProfile, (err) => {
+      if(err) {
+        console.log(err);
+        res.end(err);
+      } else {
+        // refresh the survey List
+        res.redirect('/surveys/mySurveys');
+      }
+    });
 }
