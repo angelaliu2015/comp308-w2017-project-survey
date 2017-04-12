@@ -8,22 +8,22 @@
       <% } %>
 		<div class="row">
             <div class="col-md-offset-4 col-md-4">
-                <h1>User Registration</h1>
+                <h1>Update User Profile</h1>
                 <form method="post">
                     <fieldset class="form-group">
                         <label for="username">Username: *</label>
-                        <input name="username" type="text" class="form-control" readonly/>
+                        <input name="username" type="text" class="form-control" value="<%= users.username %>" readonly/>
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="email">Email: *</label>
-                        <input name="email" type="email" class="form-control" required autofocus />
+                        <input name="email" type="email" class="form-control" value="<%= users.email %>" required autofocus />
                     </fieldset>
                     <fieldset class="form-group">
                         <label for="displayName">Display Name: *</label>
-                        <input name="displayName" type="text" class="form-control" required />
+                        <input name="displayName" type="text" class="form-control" value="<%= users.displayName %>" required />
                     </fieldset>
                     <fieldset class="form-group text-right">
-                        <input type="submit" class="btn btn-success" value="Update"/>
+                        <input type="submit" class="btn btn-success" value=" Edit "/>
                         <a href="/">
                             <input type="button" class="btn btn-warning" value="Cancel"/>
                         </a>
@@ -31,6 +31,7 @@
                 </form>
             </div>
         </div>
+
 	</main>
 
 
