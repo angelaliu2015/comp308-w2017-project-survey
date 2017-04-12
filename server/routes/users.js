@@ -26,7 +26,7 @@ router.get('/logout', (req, res, next)=>{
 
 // GET the User profile Details page in order to edit profile
 router.get('/profile', usersController.RequireAuth, (req, res, next) => {
- // res.render('auth/profile', { user: req.user });
+//res.render('auth/profile', { user: req.user });
 usersController.DisplayEdit(req, res);
 
 }).post('/profile', usersController.RequireAuth, (req, res, next) => {

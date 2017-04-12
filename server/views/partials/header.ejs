@@ -58,11 +58,13 @@
           <li><a href="/surveys"><i class="fa fa-commenting" aria-hidden="true"></i> Respond</a></li>
         <% } %>
 
-        <% if(title == "Update Profile") { %>
-          <li class="active"><a href="../users/profile"><i class="fa fa-pencil" aria-hidden="true"></i> Update Profile</a></li>
-        <% } else { %>
-          <li><a href="../users/profile"><i class="fa fa-pencil" aria-hidden="true"></i> Update Profile</a></li>
-        <% } %>
+        <% if(typeof displayName == 'string' && displayName) { %>
+          <% if(title == "Update Profile") { %>
+            <li class="active"><a href="../users/profile"><i class="fa fa-pencil" aria-hidden="true"></i> Update Profile</a></li>
+            <% } else { %>
+              <li><a href="../users/profile"><i class="fa fa-pencil" aria-hidden="true"></i> Update Profile</a></li>
+            <% } %>
+        <% } %>    
 
         <% if(typeof displayName == 'string' && displayName) { %>
           <li class="navbar-text"><i class="fa fa-user"></i> Welcome, <%= displayName %></li>
