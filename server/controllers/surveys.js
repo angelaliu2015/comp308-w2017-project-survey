@@ -16,7 +16,10 @@ module.exports.ReadSurveyList = (req, res) => {
     //get today's date
     let currentDate = new Date();
     //only show the expireDate is after currentDate
-    survey.find({ expireDate: { $gt: currentDate } }, (err, surveys) => {
+    survey.find({ 
+        expireDate: { $gt: currentDate },
+        startDate : { $lt: currentDate }
+        }, (err, surveys) => {
         if (err) {
             return console.error(err);
         }
@@ -65,16 +68,20 @@ module.exports.CreateSurvey = (req, res) => {
         //check if it is online environement
         let evi = process.env.localEvi;
         let expireDate;
+        let startDate;
 
         if (evi != null || evi == "online"){
             //if it is online environment, add timezone offset to expire date
-            expireDate =  moment.utc(Date.parse(req.body.expireDate)).subtract(timeOffset,'m').format().toString();          
+            expireDate =  moment.utc(Date.parse(req.body.expireDate)).subtract(timeOffset,'m').format().toString();
+            startDate = moment.utc(Date.parse(req.body.startDate)).subtract(timeOffset,'m').format().toString();          
         }
         else
         {
             expireDate =  moment.utc(Date.parse(req.body.expireDate)).format().toString(); 
+            startDate = moment.utc(Date.parse(req.body.startDate)).format().toString(); 
         }
         console.log(expireDate);
+        console.log(startDate);
         
         //create question objects
         let numberOfQuestion = req.body.numberOfQuestion;
@@ -133,6 +140,7 @@ module.exports.CreateSurvey = (req, res) => {
             "topic": req.body.topic,
             "user": req.user._id,
             "createDate": currentDate,
+            "startDate" : startDate,
             "expireDate": expireDate,//req.body.date,
             "questions": questionArray,
             /* schema model template

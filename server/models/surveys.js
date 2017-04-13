@@ -8,6 +8,7 @@ let surveySchema = mongoose.Schema({
     topic: String,
     user: Schema.Types.ObjectId,
     createDate : { type : Date, default : Date.now },
+    startDate : Date,
     expireDate : Date,
     questions : { type: Array, default:[]}
     /*[
