@@ -16,7 +16,7 @@ module.exports.ReadSurveyList = (req, res) => {
     //get today's date
     let currentDate = new Date();
     //only show the expireDate is after currentDate
-    survey.find({ expireDate: { $gt: currentDate } }, (err, surveys) => {
+    survey.find({ expireDate: { $gt: currentDate },startDate:{$lt:currentDate} }, (err, surveys) => {
         if (err) {
             return console.error(err);
         }
@@ -140,6 +140,7 @@ module.exports.CreateSurvey = (req, res) => {
             "topic": req.body.topic,
             "user": req.user._id,
             "createDate": currentDate,
+            "startDate":startDate,
             "expireDate": expireDate,//req.body.date,
             "questions": questionArray,
             /* schema model template
