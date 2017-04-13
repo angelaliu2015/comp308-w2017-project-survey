@@ -75,7 +75,6 @@ module.exports.CreateSurvey = (req, res) => {
         let evi = process.env.localEvi;
         let startDate;
         let expireDate;
-        let startDate;
 
         if (evi != null || evi == "online"){
             //if it is online environment, add timezone offset to expire date
