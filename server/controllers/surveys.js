@@ -64,16 +64,23 @@ module.exports.CreateSurvey = (req, res) => {
         let timeOffset = req.body.timeOffset;
         //check if it is online environement
         let evi = process.env.localEvi;
+        let startDate;
         let expireDate;
 
         if (evi != null || evi == "online"){
             //if it is online environment, add timezone offset to expire date
+            startDate = moment.utc(Date.parse(req.body.startDate)).subtract(timeOffset,'m').format().toString();
             expireDate =  moment.utc(Date.parse(req.body.expireDate)).subtract(timeOffset,'m').format().toString();          
         }
         else
         {
+
+            startDate =  moment.utc(Date.parse(req.body.startDate)).format().toString(); 
             expireDate =  moment.utc(Date.parse(req.body.expireDate)).format().toString(); 
         }
+        console.log("start..")
+        console.log(startDate);
+        console.log("expire..")
         console.log(expireDate);
         
         //create question objects
