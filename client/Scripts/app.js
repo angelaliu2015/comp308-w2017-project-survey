@@ -17,19 +17,11 @@ $(function () {
     //disable datepicker's date before today
     minDate:new Date()
   });
-  $('#datetimepicker2').datetimepicker({
+   $('#datetimepicker2').datetimepicker({
     locale:'en-ca',
     //disable datepicker's date before today
-    //minDate:new Date()
-     useCurrent: false
+    minDate:new Date()
   });
-   $("#datetimepicker1").on("dp.change", function (e) {
-            $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
-        });
-        $("#datetimepicker2").on("dp.change", function (e) {
-            $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
-        });
-
 })();
 
 
@@ -46,4 +38,3 @@ function showTimeOffset() {
   let time = moment().utcOffset();
     alert(time);
 }
-
