@@ -59,4 +59,14 @@ router.get('/delete/:id',usersController.RequireAuth, (req, res, next) => {
   surveysController.DeleteSurvey(req, res);
 });
 
+// get -- view the  survey statistics by survey id
+router.get('/statistics/:id',usersController.RequireAuth, (req, res, next) => {
+  surveysController.ViewSurveyStatistics(req, res);
+});
+
+// get -- view the  survey statistics by survey id
+router.get('/excel/:id',usersController.RequireAuth, (req, res, next) => {
+  surveysController.exportToExcel(req, res);
+});
+
 module.exports = router;
