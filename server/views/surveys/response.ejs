@@ -29,7 +29,7 @@
                      <div class="form-check">
                      <label class="form-check-label">
                           <% if (surveys.questions[count].questionAns[i].answer != "") { %>
-                            <input type="radio" class="form-check-input" name="question<%=count%>" value="<%= surveys.questions[count].questionAns[i].answer %>">
+                            <input type="radio" class="form-check-input" name="question<%=count%>" value="<%= surveys.questions[count].questionAns[i].answer %>" required>
                             <%= surveys.questions[count].questionAns[i].answer %>
                            <% } else { %>
                            <input type="hidden" class="form-check-input" name="question<%=count%>" value="<%= surveys.questions[count].questionAns[i].answer %>">
@@ -42,7 +42,7 @@
                  <% } else if (type==3) {%>   
                       <div class="form-group">
                         <label for="Textarea">Your Answer</label>
-                        <textarea class="form-control" id="Textarea" rows="3" name = "question<%=count%>"></textarea>
+                        <textarea class="form-control" id="Textarea" rows="3" name = "question<%=count%>" required></textarea>
                       </div> 
                <% } %>
                
