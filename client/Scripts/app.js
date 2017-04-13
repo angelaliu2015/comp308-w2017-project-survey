@@ -12,7 +12,11 @@
 
 
 $(function () {
-  $('#datetimepicker1').datetimepicker({locale:'en-ca'});
+  $('#datetimepicker1').datetimepicker({
+    locale:'en-ca',
+    //disable datepicker's date before today
+    minDate:new Date()
+  });
 })();
 
 //get local time zone offset to timezone input value
@@ -27,3 +31,4 @@ function showTimeOffset() {
   let time = moment().utcOffset();
     alert(time);
 }
+
