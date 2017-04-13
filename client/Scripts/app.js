@@ -25,7 +25,6 @@ $(function () {
 })();
 
 
-
 //get local time zone offset to timezone input value
 function timeChange(){
       let time = moment().utcOffset();
