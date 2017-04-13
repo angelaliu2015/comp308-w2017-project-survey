@@ -8,6 +8,7 @@ let questionSchema = require('../models/question');
 //report related dependencies.
 var excel = require('node-excel-export');
 var schema = require('../models/results')();
+var flash  = require('req-flash');
 
 //convert to timezone
 let moment = require('moment-timezone');
@@ -269,6 +270,7 @@ module.exports.ReadUserSurvey = (req, res) => {
             res.render('surveys/userSurvey', {
                 title: 'My Surveys List',
                 surveys: surveys,
+                messages:'',
                 displayName: req.user.displayName,
             })
         }
@@ -479,12 +481,14 @@ module.exports.ViewSurveyStatistics = (req, res) => {
                         return console.error(err);
                     }
                     else {
-                        console.log("0000000000000000000000000")
-                    //req.flash('success', {msg: 'no one answer this survey.'});
-                    
+                     
+                    //req.flash('errorMessage', 'No errors, you\'re doing fine');
+                    //res.locals.messages = req.flash();
+                    //alert("no one answers this survey yet.");
+                     //res.redirect('/surveys/mySurveys');
                     res.render('surveys/userSurvey', {
                     title: 'My Surveys List',
-                    messages: req.flash('error'),
+                    messages: 'this survey has no answers',
                     surveys: surveys,
                     displayName: req.user.displayName,
                     });
