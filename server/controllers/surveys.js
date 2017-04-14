@@ -379,6 +379,8 @@ module.exports.ViewSurveyStatistics = (req, res) => {
                             {
                                 let part = {}  ;
                                 let type = surveys[0].type;
+                                part['type'] = type;
+                                part['total'] = 0;
                                 switch(type){
                                     case 1:
                                     {
@@ -453,6 +455,16 @@ module.exports.ViewSurveyStatistics = (req, res) => {
                                     break;
                                     case 3:
                                     {
+                                         part["topic"] = surveys[0].questions[count].questionTopic;
+                                         ans0 = {'answer':"NA1"};
+                                         ans1 = {'answer':"NA2"};
+                                         ans2 = {'answer':"NA3"};
+                                         part[ans0['answer']] = 0;
+                                         part[ans1['answer']] = 0;
+                                         part[ans2['answer']] = 0;
+                                        for(let player=0;player<respondents;player++){
+                                         part['total'] ++;
+                                          }
 
                                     }
                                     break;
@@ -462,14 +474,7 @@ module.exports.ViewSurveyStatistics = (req, res) => {
                                     }
                                //end of switch block
                                 }
-                     
-                                  
-                    //  catch(err){
-                    //      //should implement here...
-                    //      let 
-                    //      console.log(err);
 
-                    //  }
                     result_[count] = part;
 
                  }
@@ -491,16 +496,35 @@ module.exports.ViewSurveyStatistics = (req, res) => {
                       console.log(quetionTopic);
                       let singleResult = result_[keys[count]];
                       let keys_ = Object.keys(singleResult);
+                      let type = result_[keys[count]]['type'];
+                      let total = 0;
+                      if(type==3)
+                      {
+                          console.log("type 3 called.")
+                        total = result_[keys[count]]['total'];
+                         console.log(total);
+                         console.log(keys_[3]);
+                          console.log(keys_[4]);
+                           console.log(keys_[5]);
+                            console.log(singleResult[keys_[3]]);
+                            console.log(singleResult[keys_[4]]);
+                            console.log(singleResult[keys_[5]]);
+                      }
+                      else
+                      {
+                          total = singleResult[keys_[3]]+singleResult[keys_[4]]+singleResult[keys_[5]];
+                      }
+
                       let newSingleResult = new schema.SingleResult({
                           "questionTopic":quetionTopic,
                           "ans":{
-                              "a1":keys_[1],
-                              "a1result":singleResult[keys_[1]],
-                               "a2":keys_[2],
-                              "a2result":singleResult[keys_[2]],
-                               "a3":keys_[3],
-                              "a3result":singleResult[keys_[3]],
-                              "total":singleResult[keys_[1]]+singleResult[keys_[2]]+singleResult[keys_[3]]
+                              "a1":keys_[3],
+                              "a1result":singleResult[keys_[3]],
+                               "a2":keys_[4],
+                              "a2result":singleResult[keys_[4]],
+                               "a3":keys_[5],
+                              "a3result":singleResult[keys_[5]],
+                              "total":total
                           }
 
                       });
