@@ -502,13 +502,7 @@ module.exports.ViewSurveyStatistics = (req, res) => {
                       {
                           console.log("type 3 called.")
                         total = result_[keys[count]]['total'];
-                         console.log(total);
-                         console.log(keys_[3]);
-                          console.log(keys_[4]);
-                           console.log(keys_[5]);
-                            console.log(singleResult[keys_[3]]);
-                            console.log(singleResult[keys_[4]]);
-                            console.log(singleResult[keys_[5]]);
+      
                       }
                       else
                       {
