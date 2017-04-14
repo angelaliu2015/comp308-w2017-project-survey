@@ -7,6 +7,7 @@ let question = require('../models/question');
 let surveySchema = mongoose.Schema({
     topic: String,
     user: Schema.Types.ObjectId,
+    type:Number,
     createDate : { type : Date, default : Date.now },
     startDate : Date,
     expireDate : Date,

@@ -143,6 +143,7 @@ module.exports.CreateSurvey = (req, res) => {
         let newSurvey = survey({
             "topic": req.body.topic,
             "user": req.user._id,
+            "type":type,
             "createDate": currentDate,
             "startDate" : startDate,
             "expireDate": expireDate,//req.body.date,
@@ -376,9 +377,11 @@ module.exports.ViewSurveyStatistics = (req, res) => {
                             let result_ = {}
                             for(let count = 0;count<numberOfQuestion;count++)
                             {
-                                let part = {}  
-                     
-                             try{
+                                let part = {}  ;
+                                let type = surveys[0].type;
+                                switch(type){
+                                    case 1:
+                                    {
                                     let ans0 = surveys[0].questions[count].questionAns[0];
                                     console.log(ans0);
                                     let ans1 = surveys[0].questions[count].questionAns[1];
@@ -400,22 +403,73 @@ module.exports.ViewSurveyStatistics = (req, res) => {
                                         part[ans1['answer']]++;
                                         break;
                                         case ans2['answer']:
-                                         part[ans2['answer']]++;
-                                       
+                                        part[ans2['answer']]++;
                                         break;
                                         default:
                                             { }
                                         }
-                         
-                                    }   
-                            
+                                      }   
+                                    }
+                                    break;
+                                    case 2:
+                                    {
+                                    let ans0 = surveys[0].questions[count].questionAns[0];
+                                    console.log(ans0);
+                                    let ans1 = surveys[0].questions[count].questionAns[1];
+                                    console.log(ans1);
+                                    let ans2 = {};
+                                    if(surveys[0].questions[count].questionAns.length>2)
+                                    {
+                                        ans2 = surveys[0].questions[count].questionAns[2];
+                                    }
+                                    else
+                                    {
+                                        ans2 = {'answer':"NA"};
+                                    }
+                                    
+                                    part["topic"] = surveys[0].questions[count].questionTopic;
+                                    part[ans0['answer']] = 0;
+                                    part[ans1['answer']] = 0;
+                                    part[ans2['answer']] = 0;
+                                    for(let player=0;player<respondents;player++){
+                                    let oneAns = answers[player].questions[count].questionAns;
+                                    console.log(oneAns);
+                                    switch(oneAns) {
+                                        case ans0['answer']:
+                                        part[ans0['answer']]++;
+                                        break;
+                                        case ans1['answer']:
+                                        part[ans1['answer']]++;
+                                        break;
+                                        case ans2['answer']:
+                                        part[ans2['answer']]++;
+                                        break;
+                                        default:
+                                            { }
+                                        }
+                                      }   
 
-                            }
-                     catch(err){
-                         //should implement here...
-                         console.log(err);
+                                    }
+                                    break;
+                                    case 3:
+                                    {
 
-                     }
+                                    }
+                                    break;
+                                    default:
+                                    {
+
+                                    }
+                               //end of switch block
+                                }
+                     
+                                  
+                    //  catch(err){
+                    //      //should implement here...
+                    //      let 
+                    //      console.log(err);
+
+                    //  }
                     result_[count] = part;
 
                  }
