@@ -20,8 +20,16 @@ $(function () {
    $('#datetimepicker2').datetimepicker({
     locale:'en-ca',
     //disable datepicker's date before today
-    minDate:new Date()
+    //minDate:new Date()
+     useCurrent: false
   });
+
+  $("#datetimepicker1").on("dp.change", function (e) {
+            $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker2").on("dp.change", function (e) {
+            $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+        });
 })();
 
 
