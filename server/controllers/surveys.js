@@ -5,10 +5,12 @@ let survey = require('../models/surveys');
 let answerSchema = require('../models/answer');
 let questionSchema = require('../models/question');
 
+
 //report related dependencies.
 var excel = require('node-excel-export');
 var schema = require('../models/results')();
 var flash  = require('req-flash');
+
 
 //convert to timezone
 let moment = require('moment-timezone');
@@ -21,7 +23,6 @@ module.exports.ReadSurveyList = (req, res) => {
     //get today's date
     let currentDate = new Date();
     //only show the expireDate is after currentDate
-
     survey.find({ 
         expireDate: { $gt: currentDate },
         startDate : { $lt: currentDate }
@@ -73,7 +74,6 @@ module.exports.CreateSurvey = (req, res) => {
         let timeOffset = req.body.timeOffset;
         //check if it is online environement
         let evi = process.env.localEvi;
-        let startDate;
         let expireDate;
 
 
@@ -87,9 +87,6 @@ module.exports.CreateSurvey = (req, res) => {
             expireDate =  moment.utc(Date.parse(req.body.expireDate)).format().toString(); 
             startDate = moment.utc(Date.parse(req.body.startDate)).format().toString(); 
         }
-        console.log("start..")
-        console.log(startDate);
-        console.log("expire..")
         console.log(expireDate);
         console.log(startDate);
         
@@ -239,9 +236,8 @@ module.exports.ResponseSurvey = (req, res) => {
         questionArray.push(question);
     }
 
-    let id = mongoose.Types.ObjectId.createFromHexString(req.params.id);
+
     let newResponse = answerSchema({
-        "surveyID":id,
         "surveyTopic": req.body.surveyTopic,
         "user": req.body.userId,
         "questions": questionArray,
@@ -346,6 +342,7 @@ module.exports.GotoCreatePage = (req, res) => {
     let numberOfQuestion = parseInt(req.body.numberOfQuestion)
     //redirect params to create page
     res.redirect('/surveys/create/' + '?topic=' + req.body.topic + '&type=' + req.body.type + '&numberOfQuestion=' + numberOfQuestion);
+
 }
 
 
@@ -666,4 +663,7 @@ return res.send(report);
 }
 
 
+
+
+}
 

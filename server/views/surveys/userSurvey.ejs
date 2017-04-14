@@ -16,7 +16,6 @@
               <th class="text-center">Survey Topic</th>
               <th class="text-center"></th>
               <th class="text-center"></th>
-              <th class="text-center"></th>
             </tr>
             <!-- Template Row -->
             <% for (let count = 0; count < surveys.length; count++) { %>
@@ -30,11 +29,11 @@
               <a href="/surveys/delete/<%= surveys[count]._id %>" class="btn btn-danger">
               <i class="fa fa-trash-o"></i> Delete</a>
               </td>
+
               <td class="text-center">
               <a href="/surveys/statistics/<%= surveys[count]._id %>" class="btn btn-danger">
               <i class="fa fa-bar-chart" aria-hidden="true"></i> View Statistics</a>
               </td>
-
             </tr>
             <% } %>
           </table>
