@@ -335,3 +335,5 @@ module.exports.GotoCreatePage = (req, res) => {
     //redirect params to create page
     res.redirect('/surveys/create/' + '?topic=' + req.body.topic + '&type=' + req.body.type + '&numberOfQuestion=' + numberOfQuestion);
 }
+
+
