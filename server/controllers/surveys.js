@@ -229,8 +229,9 @@ module.exports.ResponseSurvey = (req, res) => {
         questionArray.push(question);
     }
 
-
+    let id = mongoose.Types.ObjectId.createFromHexString(req.params.id);
     let newResponse = answerSchema({
+        "surveyID":id,
         "surveyTopic": req.body.surveyTopic,
         "user": req.body.userId,
         "questions": questionArray,
