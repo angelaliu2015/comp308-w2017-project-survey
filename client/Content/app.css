@@ -5,17 +5,20 @@ body {
   }
 
 .navbar {
-  margin-top: 20px;
   width:1024px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
 }
 
+.carousel{
+  margin-top: -20px;
+}
+
 .body_container {
   padding-top: 100px;
   padding-bottom:120px;
-  width:100%;
+  margin-top: -25px;
 }
 
 .content_center {
@@ -40,8 +43,16 @@ body {
   text-align: center;
   border-top: 1px solid #e5e5e5;
   background-color: #333;
-  
-  
+}
+
+.list_title{
+  background-color: #428bca;
+  color: white;
+  padding-top:10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border-radius: 5px;
+
 }
 
 .content_bottom {
@@ -99,4 +110,18 @@ margin-top:30px;
 .index_container {
   padding-top: 100px;
   width:100%;
+}
+
+.container{
+  width:1024px;
+}
+
+.label_Styling {
+	margin-bottom: 10px;
+	padding-bottom:25px;
+	padding-left:10px;
+	font-size: 15px;
+	font-weight: bolder;
+	height:25px;
+	border-left:5px solid #F0461C;
 }
