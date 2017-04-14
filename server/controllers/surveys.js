@@ -515,6 +515,8 @@ module.exports.ViewSurveyStatistics = (req, res) => {
                           total = singleResult[keys_[3]]+singleResult[keys_[4]]+singleResult[keys_[5]];
                       }
 
+                      result_[keys[count]]['total'] = total;
+
                       let newSingleResult = new schema.SingleResult({
                           "questionTopic":quetionTopic,
                           "ans":{
