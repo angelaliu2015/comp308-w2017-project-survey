@@ -1,3 +1,11 @@
+/**
+File name: 
+Author: COMP308 Group 3
+
+Website name: Its Survey
+Description: the controller file which contains all functions for answer survey pages
+*/
+
 let mongoose = require('mongoose');
 
 // define the game model

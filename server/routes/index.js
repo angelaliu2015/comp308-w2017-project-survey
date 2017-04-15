@@ -1,3 +1,9 @@
+/**
+File name: Index.js
+Author: COMP308 Group 3
+Website name: Its Survey
+Description: the route file which controls all functions for Home navigation bar
+*/
 // modules required for routing
 let express = require('express');
 let router = express.Router();

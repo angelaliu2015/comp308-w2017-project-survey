@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Module dependencies.
+ *  Module dependencies.
  */
 
 let app = require('./server/app');

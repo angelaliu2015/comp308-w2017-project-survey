@@ -1,3 +1,9 @@
+/**
+File name: Index.js
+Author: COMP308 Group 3
+Website name: Its Survey
+Description: the controller file which contains all functions for Home page
+*/
 // Display the Home Page
 module.exports.DisplayHome = (req, res) => {
   res.render('content/index', {

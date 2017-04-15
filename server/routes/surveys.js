@@ -1,3 +1,9 @@
+/**
+File name: Surveys.js
+Author: COMP308 Group 3
+Website name: Its Survey
+Description: the route file which controls all functions for survey object
+*/
 // modules required for routing
 let express = require('express');
 let router = express.Router();

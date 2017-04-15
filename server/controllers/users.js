@@ -1,3 +1,9 @@
+/**
+File name: User.js
+Author: COMP308 Group 3
+Website name: Its Survey
+Description: the controller file which contains all functions for User pages
+*/
 let mongoose = require('mongoose');
 let passport = require('passport');
 

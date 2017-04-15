@@ -1,3 +1,9 @@
+/**
+File name: Survey.js
+Author: COMP308 Group 3
+Website name: Its Survey
+Description: the controller file which contains all functions for Survey pages
+*/
 let mongoose = require('mongoose');
 
 //import surveys model
